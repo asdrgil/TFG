@@ -1,0 +1,103 @@
+\documentclass{article}
+%Import packages
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{kantlipsum}
+\usepackage{xparse}
+\usepackage{titlesec}
+\usepackage{hyperref}
+%Insert mathematical formulae
+\usepackage{amsmath}
+%Change interlinear space
+\usepackage{setspace}
+\usepackage{pgfgantt}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\graphicspath{ {imagenes/} }
+%Commands
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=35mm,
+ right=25mm,
+ top=20mm,
+ }
+
+
+%Command to add comments in the document without being displayed in the output
+\newcommand{\comment}[1]{}
+
+%Rename references section
+\renewcommand{\refname}{Bibliografía}
+
+ %Change interlinear spacing
+
+%Allow extra subsection level
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
+
+
+\begin{document}
+
+\section{Conclusiones y trabajo futuro}
+\paragraph{}
+Tras la realización de este trabajo, en esta sección se van a incluir las conclusiones que se han extraído y las futuras líneas de trabajo en las que se puede continuar el desarrollo de este proyecto.
+
+\subsection{Conclusiones}
+\paragraph{}
+En este trabajo se ha podido verificar que la hipótesis inicial era correcta: la representación del dominio influye significativamente en los resultados obtenidos en la planificación automática.
+
+\paragraph{}
+Por otro lado, como se ha visto, estos resultados son muy dependientes del tipo de planificador. Las modificaciones manuales se han adaptado mejor al planificador MFF, pues es mucho más intuitivo y fácil de comprender que el otro planificador utilizado, LPG-td.
+
+\paragraph{}
+Respecto a los resultados obtenidos con el software de terceros desarrolladores, los resultados obtenidos con aquellos que cambiaban la representación de los dominios a numérico con dígitos o con palabras han sido bastante aceptables, siendo la versión numérica con dígitos prácticamente idéntica a la versión realizada a mano. Por otro lado, el software PTT que permite generar macrooperadores no ha sido capaz de encontrar ningún macroooperador a pesar de demostrar en las versiones realizadas a mano que existían múltiples opciones que además mejoran el proceso de planificación.
+
+\paragraph{}
+Como las pruebas se han realizado casi exclusivamente en un único dominio, la generalización de estos resultados debe realizarse con cautela. Estos resultados permiten extraer la conclusión de que la variación de la representación de los objetos influye en el proceso de planificación para cada tipo de planificador. Sin embargo, no es posible extraer conclusiones concluyentes referentes a la utilidad del software de terceros desarrolladores utilizados en este trabajo ya que para eso hubiese sido necesario realizar estas pruebas con un abanico mucho más amplio de dominios. Sin embargo, a la vista de los resultados obtenidos, sí es posible concluir que en algunos problemas como en Childsnack existe un amplio margen de mejoras en relación a los dominios generados por el software utilizado, lo que lleva a sospechar que esto puede suceder en otros dominios.
+
+\subsection{Trabajo futuro}
+.\paragraph{}
+En este trabajo, debido a la complejidad del planificador LPG-td, las conclusiones extraídas tienen bastante margen de mejora. Existe una gran diferencia entre las explicaciones de los resultados obtenidos con el planificador MFF respecto a las conclusiones de los resultados obtenidos con LPG-td. Por lo tanto, lo primero que se podría hacer para continuar con este proyecto sería entender mejor el funcionamiento de LPG-td para así poder dar mejores explicaciones de los resultados obtenidos.
+
+\paragraph{}
+Tras esto, se pueden añadir más planificadores con los que realizar pruebas a los dominios utilizados. Se han utilizado únicamente dos planificadores porque se ha intentado centrar los esfuerzos en la generación de distintas versiones de los problemas más que en los resultados obtenidos para cada tipo de planificador, por lo que este aspecto puede ser mejorado.
+
+\paragraph{}
+Por último, la parte más costosa pero a la vez la que más útil podría ser sería intentar extrapolar los resultados obtenidos por cada tipo de planificador que se tome en consideración para cada tipo de modificación del dominio que sea extrapolable a otros dominios completamente distinto. Esto permitiría generar unas pautas para la modificación de los dominios que permitiesen la mejora de los dominios para cada planificador. Inicialmente esto podría ser simplemente unas pautas para los creadores de problemas en PDDL pero más adelante se podría transformar en un software independiente de dominio que identificase las pautas de las distintas modificaciones posibles del dominio y las ejecutase con el fin de acercarse a la versión más óptima del mismo para un tipo de planificador concreto midiendo la optimalidad en función del coste y del tiempo de búsqueda necesario del planificador.
+
+\paragraph{}
+Se es consciente de que esta última línea de investigación futura es de una enorme complejidad pero tal y como se ha demostrado con las modificaciones realizadas a mano en esta memoria, esta complejidad se podría ver recompensada con la generación de dominios que mejorasen sustancialmente el coste y el tiempo de planificación.
+\end{document}

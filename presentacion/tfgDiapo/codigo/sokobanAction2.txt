@@ -1,0 +1,9 @@
+(:action move-player-left
+   :parameters (?x ?y)
+   :precondition (and
+        (left ?x ?y)
+        (not (box ?y))
+        (player ?x))
+   :effect (and
+        (player ?y)
+        (not (player ?x))))

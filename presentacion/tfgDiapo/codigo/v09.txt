@@ -1,0 +1,6 @@
+(waiting child1 table1)
+(allergic_gluten child1)
+(allergic_gluten child1 table1)
+(waiting child2 table2)
+(not_allergic_gluten child2)
+(not_allergic_gluten child2 table2)

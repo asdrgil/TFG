@@ -1,0 +1,9 @@
+(:action make_sandwich 
+    :parameters ()
+    :precondition (and
+        (>= (Nbread-portion-at_kitchen_bread) 1)
+        (>= (Ncontent-portion-at_kitchen_content) 1))
+    :effect (and
+        (increase (Nsandwich-at_kitchen_sandwich) 1)
+        (decrease (Nbread-portion-at_kitchen_bread) 1)
+        (decrease (Ncontent-portion-at_kitchen_content) 1)))

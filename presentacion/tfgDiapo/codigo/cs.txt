@@ -1,0 +1,23 @@
+(at_kitchen_bread b1)
+(at_kitchen_content c1)
+(at tr1 kitchen)
+(not_allergic_gluten ch1)
+(waiting ch1 tb1)
+(served ch1)
+(:action make_sandwich
+    :parameters (?s - sandwich
+     ?b - bread-portion
+     ?c - content-portion)
+    :precondition (and
+        (at_kitchen_bread ?b)
+        (at_kitchen_content ?c)
+        (notexist ?s))
+    :effect (and
+        (not (at_kitchen_bread ?b))
+        (not (at_kitchen_content ?c))
+        (at_kitchen_sandwich ?s)
+        (not (notexist ?s))))
+1: MAKE_SANDWICH SW1 B1 C1
+2: PUT_ON_TRAY SW1 TR1
+3: MOVE_TRAY KITCHEN TB1
+4: SERVE_SANDWICH SW1 CH1

@@ -1,0 +1,87 @@
+\documentclass{article}
+%Import packages
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{kantlipsum}
+\usepackage{xparse}
+\usepackage{titlesec}
+\usepackage{hyperref}
+%Insert mathematical formulae
+\usepackage{amsmath}
+%Change interlinear space
+\usepackage{setspace}
+\usepackage{pgfgantt}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\graphicspath{ {imagenes/} }
+%Commands
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=35mm,
+ right=25mm,
+ top=20mm,
+ }
+
+
+%Command to add comments in the document without being displayed in the output
+\newcommand{\comment}[1]{}
+
+%Rename references section
+\renewcommand{\refname}{Bibliografía}
+
+ %Change interlinear spacing
+
+%Allow extra subsection level
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
+
+
+\begin{document}
+\section{Introducción}
+\paragraph{}
+En este trabajo se intenta analizar la correlación que existe en la planificación automática entre distintas versiones que representan el mismo problema a resolver y el resultado obtenido con la planificación de estas distintas versiones con varios planificadores. El lenguaje utilizado para la planificación automática es PDDL.
+
+\paragraph{}
+En las siguientes secciones se puede encontrar una descripción del estado de la cuestión, donde se ahondará desde la parte más genérica en la que se engloba este trabajo (la planificación automática) hasta las partes más concretas, como puede ser los distintos tipos de software que se han desarrollado para modificar dominios y problemas en PDDL.
+
+\paragraph{}
+Una vez se ha puesto sobre la mesa el estado de la investigación del área en el que se encuentra este trabajo, se pasará a utilizar esta información para intentar dar luz sobre la posibilidad de no sólo realizar modificaciones automáticas con el software de terceros, sino también realizar estas modificaciones manuales. De esta manera, será posible calcular cuánto margen de mejora existe entre la solución óptima y la solución obtenida con los distintos programas para modificar estos dominios (puesto que tras el análisis del principal dominio utilizado, ha sido posible la obtención de los pasos óptimos para resolver cualquier problema de entrada).
+
+\paragraph{}
+Estos resultados serán comparados y finalmente se obtendrán unas conclusiones y unas líneas futuras de trabajo. Se es consciente de que este trabajo no es lo suficientemente amplio para poder generalizar las conclusiones obtenidas. No obstante, se espera que puedan servir como pautas a tener en cuenta al realizar futuros programas que modifiquen la representación de los dominios para que así puedan hacer que los planificadores obtengan soluciones mejores y en menos tiempo.
+
+
+\end{document}

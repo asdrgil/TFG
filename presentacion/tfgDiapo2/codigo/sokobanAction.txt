@@ -1,0 +1,21 @@
+(:action move-player
+   :parameters (?x ?y ?d)
+   :precondition (and
+        (adjacent ?x ?y ?d)
+        (not (box ?y))
+        (player ?x))
+   :effect (and
+        (player ?y)
+        (not (player ?x))))
+(:action push-box
+   :parameters (?x ?y ?z ?d)
+   :precondition (and
+        (adjacent ?x ?y ?d)
+        (adjacent ?y ?z ?d)
+        (player ?x)(box ?y)
+        (not (box ?z)))
+   :effect (and
+        (not (player ?x))
+        (player ?y)
+        (not (box ?y))
+        (box ?z)))

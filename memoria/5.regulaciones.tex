@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
+\usepackage{natbib}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\graphicspath{ {imagenes/} }
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}  % 2nd level of enumerate with numbers
+\renewcommand{\labelenumii}{\theenumii} % 2ndd level of enumerate with numbers
+\author{Adrián Gil Moral }
+
+\newcommand{\cool}[1] {
+    {\texttt{#1}}
+}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=35mm,
+ right=25mm,
+ top=20mm,
+ }
+
+\begin{document}
+\section{Regulaciones}
+
+\paragraph{}
+En este capítulo se desglosan las regulaciones sociales, legales y económicas de este proyecto.
+
+\subsection{Regulaciones sociales}
+\paragraph{}
+Este proyecto está enmarcado dentro de la investigación de planificación automática en PDDL. Las conclusiones de este trabajo son útiles principalmente para investigadores de este sector así como también para todo aquel que quiera definir manualmente dominios en PDDL, ya que las conclusiones extraídas podrán ser de ayuda para que dicho dominio pueda ser resuelto en el menor tiempo de búsqueda posible.
+
+\subsection{Regulaciones legales}
+\paragraph{}
+Para este proyecto la totalidad de herramientas utilizadas han sido de software libre y gratuito. En el caso de los dominios utilizados, haciendo una lectura en diagonal de los artículos de PDDL citados se puede ver que la competición IPC es una piedra angular en el campo de la investigación de la planificación automática. Para poder testear los dominios presentados a esta competición debido al funcionamiento de PDDL, estos necesariamente tienen que ser editables (es decir, la entrada de los problemas no son archivos binarios o de otro tipo que dificulten la edición manual de los mismos). A su vez, la inmensa mayoría \comment{Todos?} de los planificadores presentados a esta competición son de software libre y gratuito. Esto permite que se produzca una constante retroalimentación entre investigadores ya que aquellos hallazgos referentes a la planificación son socializados entre los participantes. Esto ha permitido por ejemplo que el planificador de software libre FF halla sido presentado por distintos investigadores en distintas versiones del mismo (por ejemplo, MacroFF o Marvin son implementaciones que parten de la base de FF).
+
+\paragraph{}
+Si los planificadores de PDDL hubiesen funcionado de otra manera en el que la entrada de los problemas no tuviese que ser necesariamente fácilmente editables y estos dominios no hubiesen sido públicos y accesibles, es muy problable que este proyecto no hubiese existido. Por ello, es imprescindible que tanto esta memoria como los scripts y los dominios utilizados sigan necesariamente esta misma política de compartición de conocimiento para permitir así que otras personas que estén trabajando en la planificación automática puedan sacar el máximo provecho a este trabajo de la misma manera que ha sucedido para la realización de este proyecto. Por tanto, además de encontrar la memoria de este proyecto en formato PDF en la biblioteca de la Universidad Carlos III de Madrid, será posible encontrar todo el código utilizado y la memoria en formato \LaTeX en el repositorio personal del alumno\footnote{https://github.com/asdrgil}.
+
+\paragraph{}
+Dicho esto, las licencias de la memoria y del código del proyecto son las siguientes:
+\begin{itemize}
+    \item Todos los dominios y scripts creados que pueden encontrarse en el repositorio personal tienen la licencia GPLv3\footnote{https://choosealicense.com/licenses/gpl-3.0/}.
+    \item Esta memoria está sujeta a la licencia de creative Commons \\ Reconocimiento-NoComercial-CompartirIgual 4.0\footnote{http://creativecommons.org/licenses/by-nc-sa/4.0/}.
+\end{itemize}
+
+\subsection{Regulaciones económicas}
+\paragraph{}
+Este proyecto puede ayudar a definir mejores dominios en PDDL, sin embargo al no haber desarrollado ningún programa independiente de dominio que realice esta tarea, no es posible obtener rédito económico inmediato de manera directa a partir del trabajo desarrollado.
+
+\end{document}

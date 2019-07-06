@@ -1,0 +1,82 @@
+\documentclass{article}
+%Import packages
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{kantlipsum}
+\usepackage{xparse}
+\usepackage{titlesec}
+\usepackage{hyperref}
+%Insert mathematical formulae
+\usepackage{amsmath}
+%Change interlinear space
+\usepackage{setspace}
+\usepackage{pgfgantt}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\graphicspath{ {imagenes/} }
+%Commands
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=35mm,
+ right=25mm,
+ top=20mm,
+ }
+
+
+%Command to add comments in the document without being displayed in the output
+\newcommand{\comment}[1]{}
+
+%Rename references section
+\renewcommand{\refname}{Bibliografía}
+
+ %Change interlinear spacing
+
+%Allow extra subsection level
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
+
+
+\begin{document}
+\section{Resumen}
+\paragraph{}
+Este trabajo es un estudio que intenta dar luz sobre la posibilidad de reducir el tiempo de búsqueda y la calidad de las soluciones mediante variaciones en la representación de los dominios y problemas. Para ello, se ha hecho un estudio empírico donde se ha utilizado tanto versiones propias de un mismo tipo de problema como versiones generadas mediante software independiente de dominio desarrollado por otros investigadores.
+
+\paragraph{}
+Con este trabajo se pretende demostrar lo ligado que está la planificación a la representación de los dominios, así como la enorme influencia que ejerce el planificador utilizado en la obtención de dominios. Es decir, la idoneidad de determinadas representaciones de dominios puede variar según el planificador utilizado.
+
+\paragraph{}
+La conclusiones que se obtienen de este trabajo es que se confirma la hipótesis inicial de que la variación de la representación de los dominios puede hacer que varíe significativamente los tiempos de búsqueda y la calidad de la planificación, que estos resultados son dependientes del tipo de planificador utilizado y que aún queda un largo trecho por recorrer en cuanto al software de modificación automática de dominios independiente de dominio puesto que los resultados obtenidos mediante el uso de los mismos han sido sobrepasados con bastante diferencia por las versiones realizadas a mano.
+\end{document}

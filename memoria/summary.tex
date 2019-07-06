@@ -1,0 +1,95 @@
+\documentclass{article}
+%Import packages
+\usepackage{fancybox}
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{fancyvrb}
+\usepackage{kantlipsum}
+\usepackage{xparse}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{listings}
+%Insert mathematical formulae
+\usepackage{amsmath}
+%Change interlinear space
+\usepackage{setspace}
+\usepackage{pgfgantt}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{pdflscape}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+\usepackage{rotating}
+\graphicspath{ {imagenes/} }
+\lstdefinestyle{MyListStyle} {
+    numbers=left
+}
+
+\renewcommand{\q}[1]{``#1''}
+
+
+\newcommand{\cool}[1] {
+    {\texttt{#1}}
+}
+
+%Commands
+\usepackage{geometry}
+\usepackage{eurosym}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=34mm,
+ right=25mm,
+ top=20mm,
+ }
+ 
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+%Command to add comments in the document without being displayed in the output
+\newcommand{\comment}[1]{}
+
+%Rename references section
+\renewcommand{\refname}{Bibliografía}
+\renewcommand{\listfigurename}{Índice de figuras}
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\contentsname}{Índice}
+
+\newcounter{subsubsubsection}
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+%\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\linespread{1.4}
+
+\begin{document}
+
+
+
+\end{document}

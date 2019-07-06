@@ -1,0 +1,21 @@
+(:action make_sandwich_2
+    :parameters
+     (?s ?s2 - sandwich
+     ?b ?b2 - bread-portion
+     ?c ?c2 - content-portion)
+    :precondition (and
+        (at_kitchen_bread ?b)
+        (at_kitchen_bread ?b2)
+        (at_kitchen_content ?c)
+        (at_kitchen_content ?c2)
+        (notexist ?s)
+        (notexist ?s2))
+    :effect (and
+        (not(at_kitchen_bread ?b))
+        (not(at_kitchen_bread ?b2))
+        (not(at_kitchen_content ?c))
+        (not(at_kitchen_content ?c2))
+        (at_kitchen_sandwich ?s)
+        (at_kitchen_sandwich ?s2)
+        (not(notexist ?s)))
+        (not(notexist ?s2))))

@@ -1,0 +1,39 @@
+(:action move_tray
+    :parameters (?t - tray ?p1
+     ?p2 - place)
+    :precondition (and (at ?t ?p1))
+    :effect (and
+        (not (at ?t ?p1))
+        (at ?t ?p2))
+)
+
+(:action serve_sandwich
+    :parameters (?s - sandwich
+     ?c - child ?t - tray ?p - place)
+    :precondition (and 
+        (not_allergic_gluten ?c)
+        (waiting ?c ?p)
+        (ontray ?s ?t)
+        (at ?t ?p))
+    :effect (and
+        (not (ontray ?s ?t))
+        (served ?c))
+)
+
+(:action move_tray_serve_sandwich
+    :parameters (?t - tray ?p1
+     ?p2 - place ?s - sandwich
+     ?c - child)
+    :precondition (and
+        (at ?t ?p1)
+        (waiting ?c ?p2)
+        (not_allergic_gluten ?c)
+        (ontray ?s ?t))
+
+    :effect (and
+        (not (at ?t ?p1))
+        (at ?t ?p2)
+        (not (ontray ?s ?t))
+        (served ?c)
+        (increase (total-cost) 1))
+)

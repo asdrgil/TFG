@@ -1,0 +1,451 @@
+\documentclass{article}
+%Import packages
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{kantlipsum}
+\usepackage{xparse}
+\usepackage{titlesec}
+\usepackage{hyperref}
+%Insert mathematical formulae
+\usepackage{amsmath}
+%Change interlinear space
+\usepackage{setspace}
+\usepackage{pgfgantt}
+%Commands
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=35mm,
+ right=25mm,
+ top=20mm,
+ }
+
+%Command to add comments in the document without being displayed in the output
+\newcommand{\comment}[1]{}
+
+%Rename references section
+\renewcommand{\refname}{Bibliografía}
+
+ %Change interlinear spacing
+
+%Allow extra subsection level
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
+
+
+\begin{document}
+
+\section{Estado del arte}
+
+    \subsection{Inteligencia Artificial}
+
+        \subsubsection{Definición}
+\paragraph{}
+Comunmente \comment{Buscar otra fórmula menos genérica y vacía o citar varias fuentes} se consideran las conferencias de Dartmounth de 1956\cite{conferenciaDartmounth} como el gérmen de la inteligencia artificial como campo de investigación.
+
+\paragraph{}
+Estas conferencias tenían como objetivo el estudio durante dos meses por parte de diez académicos de todos los aspectos de la inteligencia para poder describirla con una precisión tal que un ordenador pudiera simular la misma.\cite{dartmounthMcCarthy}. El organizador de estas conferencias era J. McCarthy, quien acuñaría en estas el término de inteligencia artificial como "la ciencia y la ingeniería dedicadas a la creación de máquinas inteligentes, especialmente programas de ordenador inteligentes"\cite{definicionMcCarthy}.
+
+\paragraph{}
+Cuando el término se popularizó, aparecieron muchas otras definiciones, que Stuart J. Russel y Peter Norvig clasificaron en cuatro grupos\cite{clasificacionRusselNorvig}:
+\begin{itemize}
+    \item Las que definían la inteligencia artificial como sistemas que \textbf{piensan como humanos}.
+    \item Las que definían la inteligencia artificial como sistemas que \textbf{actúan como humanos}.
+    \item Las que definían la inteligencia artificial como sistemas que \textbf{piensan racionalmente}.
+    \item Las que definían la inteligencia artificial como sistemas que \textbf{actúan racionalmente}.
+\end{itemize}
+
+        \subsubsection{¿Puede una máquina ser inteligente?}
+
+\paragraph{}
+A medida que va avanzando el desarrollo tecnológico, va creciendo el debate en torno a si una máquina puede ser inteligente. \comment{Ponerlo menos difuso, citar fuentes del debate etc}Entre los distintos criterios para establecer la inteligencia de una máquina, destacan estas tres aportaciones:
+\begin{itemize}
+    \item El juego de imitación, más tarde conocido como \textbf{el test de Turing}, fue propuesto por Alan Turing en 1950\cite{testTuring}. Consistía en que un evaluador interrogara a través de un teletipo a una máquina y a una persona que tuviesen cada uno un canal distinto e identificable de comunicación con el evaluador. Si el evaluador no fuese capaz de discernir cuál de los dos es la máquina el 70\% del tiempo durante cinco minutos, entonces se considerará que la máquina es inteligente.
+    
+    \paragraph{}
+    Siguiendo por esta línea, desde 1991 tiene lugar anualmente el premio Loebner, \cite{premioLoebner} en el cual distintos programas de ordenador compiten entre sí con el fin de intentar engañar durante el máximo tiempo posible al evaluador del test de Turing. Anualmente se entrega la medalla de bronce al programa más parecido a un ser humano. La medalla de plata (para el programa que sea capaz de superar el test de Turing) y la medalla de oro (para el programa que pueda superar el test de Turing añadiendo las entradas visuales y auditivas) aún no han sido entregadas en ninguna de las ediciones de la competición.\comment{Añadir más citas, concretar más}
+    
+    \item \textbf{La objeción de Lady Lovelace}, término acuñado por Alan Turing en el ya mencionado artículo \textit{Computing machinery and intelligence}\comment{Vuelvo a referenciar al artículo citado?}, cuestiona que las máquinas sean capaces de crear o aprender de manera autónoma, puesto que, en palabras de Lady Lovelace \textit{"[La máquina] puede hacer lo que sea que sepamos ordenarle"}, sin embargo \textit{"nunca puede hacer algo realmente nuevo"}\cite{artLadyLovelace}.
+    
+    \item \textbf{La paradoja de la caja china de Searle}, también conocido como la habitación china, es un experimento mental propuesto por John Searle y popularizado por Roger Penrose que rebate la validez del test de Turing a la vez que plantea la incapacidad de pensar de las máquinas. El experimento es el siguiente: supongamos que tenemos una máquina que recibe como entrada un texto en chino, del cual extraiga como salida un segundo texto en este mismo idioma gracias a algún tipo de detección de sintaxis. Supongamos, a su vez, que en una segunda habitación se encuentra un humano que no es capaz de comunicarse en chino, pero que tiene asu disposición una serie de manuales sobre el idioma que le indicarían qué carácteres debería escribir en función de los carácteres de entrada que haya. Pues bien, de cualquiera de estas dos maneras, concluye Searle, podrían hacer creer al evaluador que entienden el idioma de entrada, aunque no sea el caso. De aquí, Searle saca dos posibles conclusiones: o bien la habitación comprende el idioma, o bien el test de Turing no es suficiente como test de inteligencia.
+    
+\end{itemize}
+
+        \subsubsection{Evolución histórica}
+
+\paragraph{}
+Antes de empezar, es importante recalcar que esta sección se va a circunscribir exclusivamente a los avances tecnológicos que se dieron en esta materia, obviando por tanto todas las aportaciones mitológicas\cite{automatasHefeso}, filosóficas \cite{filosofiaIA}o literarias\cite{frankenstein}\cite{yoRobot}.
+
+\paragraph{}
+Aunque la máquina de Turing\cite{maquinaTuring} fue un importante precedente para el desarrollo de la Inteligencia Artificial, se considera al modelo de neuronas artificiales de 1943 de la mano de Warren McCulloch y Walter Pitts\cite{mcculloch1943} como el primer trabajo en este campo. En él, demostraron que la máquina de Turing podía ser implementado mediante una red finita de neuronas formales.
+
+\paragraph{}
+Más adelante, tuvo lugar en 1956 la ya mencionada conferencia de Dartmounth, a partir de la cual la Inteligencia Artificial se convirtió en un campo de investigación. Desde esta fecha hasta 1974, se fueron generando altas expectativas respecto a las posibilidades de la Inteligencia Artificial, lo que provocó la llegada de grandes flujos de financiación a este área de conocimiento.
+
+\paragraph{}
+Dentro de esta época, cabe a su vez destacar los siguientes avances tecnológicos:
+\begin{itemize}
+    \item[\textbf{1957}] Aparece el programa General Problem Solver (GPS)\cite{gps}, diseñado para ser un programa universal de la resolución de problemas. Es el principal antecedente de la planificación automática.
+    \item[\textbf{1958}] Aparece el lenguaje de programación de alto nivel LISP\cite{lisp}, que sería más tarde utilizado para la programación de los primeros sistemas expertos: Mycin\cite{Mycin} y Dendral\cite{dendral}.
+    \item[\textbf{1959}] Aparición del perceptrón simple\cite{perceptron}.
+    \item[\textbf{1966}] Aparición del programa ELIZA\cite{eliza}, que fue uno de los primeros lenguajes en procesar lenguaje natural.
+    \item[\textbf{1972}] Aparición del lenguaje de programación lógica Prolog\cite{prolog}, que más adelante sería propuesto como el lenguaje nativo de las máquinas de quinta generación\cite{prolog5a}. 
+\end{itemize}
+
+\paragraph{}
+A pesar de todos los avances tecnológicos, no se cumplen las expectativas depositadas en esta rama de conocimiento, por lo que entre 1974 y 1980 se reduce considerablemente la inversión. Algunos de los problemas con los que se encontraron los científicos fueron la explosión combinatoria (una gran cantidad de problemas únicamente pueden resolverse mediante tiempo exponencial), la limitada capacidad de procesamiento de los ordenadores y la paradoja de Moravec, que venía a decir que "es fácil comparativamente conseguir que las computadoras muestren capacidades similares a las de un humano adulto en tests de inteligencia, y difícil o imposible lograr que posean las habilidades perceptivas y motrices de un bebé de un año"\cite{moravec}.
+
+\paragraph{}
+Durante estos años, los avances tecnológicos en este área fueron exiguos. Sin embargo, en el año 1980 la inteligencia artificial volvió a ponerse de moda con el proyecto "quinta generación", con la cual el gobierno japonés, tras su éxito en el mercado de la microelectrónica de consumo y en el mercado automovilístico, pretendía liderar la siguiente revolución de computadoras, financiando para ello el proyecto con 850 millones de dólares.
+
+\paragraph{}
+Entre los objetivos perseguidos en las computadoras estaba inventar máquinas con capacidad de conversar, traducir, interpretar imágenes o incluso de razonar.
+
+\paragraph{}
+Sin embargo, al igual que sucedió en el periodo de 1956 a 1974, las expectativas eran demasiado altas, por lo que al no cumplirse lo esperado, a partir de 1987 cayó la financiación hasta la finalización del proyecto en 1993. Posterior a esta época caben destacar los siguientes hitos de la Inteligencia Artificial:
+
+\begin{itemize}
+    \item[\textbf{1997}] Una supercomputadora fabricada por IBM, Deep Blue, gana un encuentro a seis partidas contra el actual campeón del mundo de ajedrez por 3½ a 2½, siendo la primera supercomputadora en lograr este hito\cite{deepBlue}.
+    \item[\textbf{2011}] El sistema informático Watson desarrollado por IBM fue capaz de vencer por primera vez a dos de los mejores jugadores de \textit{Jeopardy!} de la televisión\cite{jeopardy}.
+    \item[\textbf{2015}] El sistema informático AlphaGo desarrollado por Google DeepMind fue capaz de vencer por primera vez a un jugador profesional en una partida de Go sin utilizar piezas de handicap\cite{go}.
+\end{itemize}
+
+    \subsection{Planificación automática}
+    
+        \subsubsection{Definición}
+
+\paragraph{}        
+De manera sucinta, podríamos definir la planficación automática como \textit{"el arte y la práctica de pensar antes de actuar"}\cite{paHaslum}. Si quisiéramos una definición algo más técnica, podríamos a su vez definir la planificación automática como la disciplina de la inteligencia artificial enfocada al desarrollo de solucionadores para un modelos matemáticos bien definidos, siendo estos solucionadores programas que cogen la descripción de una instancia particular de un modelo y automáticamente computan su solución\cite{torralba}.
+
+        \subsubsection{Elementos comunes de los planificadores}
+
+\paragraph{}
+Todos los planificadores en estas tres características\cite{Moises}:
+
+\begin{itemize}
+    \item \textbf{El modelo conceptual}, que es la definición formal de la tarea que se va a resolver así como la estructura de la solución.
+    \item \textbf{La representación del lenguaje}, que es la manera de definir tanto el problema como el entorno.
+    \item \textbf{El algoritmo}, que es la técnica utilizada para resolver el problema.
+\end{itemize}
+
+            
+        \subsubsection{Planificación clásica}
+
+
+\paragraph{}
+Es el modelo más básico de planificación, en el que se cuenta con el completo control y conocimiento del entorno.
+
+\paragraph{}
+En términos matemáticos, el modelo conceptual de la planificación clásica se define como la siguiente tupla:
+
+$\Sigma = (S, A, \Upsilon, C) $
+
+\begin{itemize}
+    \item $S$: conjunto de estados posibles.
+    \item $A$: conjunto de acciones posibles.
+    \item $\Upsilon$: es la función de transición entre estados $\Upsilon(s, a, s')$, donde $s' \in S$ es el estado generado tras ejecutar la acción $a \in A$ desde el estado $s \in S$.
+    \item $C$: es la función de coste $C(a) \forall a \in A$.\comment{Se define la función de coste siempre para todos los elementos aún cuando su coste es 1, o se define sólo cuando el coste es distinto de 1? En ese caso, se define el coste de cada acción o sólo de las que tengan un coste distinto de 1?}
+\end{itemize}
+
+\paragraph{}
+Siguiendo con esta definición del modelo conceptual, es posible a su vez definir el problema de planificación clásica con la siguiente tupla:
+
+$\prod = (\Sigma, s_0, G)$
+
+\begin{itemize}
+    \item $\Sigma$: modelo conceptual.
+    \item $s_0$: definición del estado inicial donde $s_0 \in S$.
+    \item $G$: conjunto de estados meta, donde $G \subseteq S$.
+\end{itemize}
+
+\paragraph{}
+La solución para los problemas de planificación clásica será una secuencia ordenada de acciones $M = (a_0, ... , a_n) \forall a_i \in A$ que permitirá realizar una serie de transiciones $(t_0, ... , t_n) \forall t \in \Upsilon$ para así poder llegar del estado inicial $s_0$ a uno de los estados meta $g \in G$.
+
+\paragraph{}
+ Generalmente, la planificación clásica se refiere a la planificación en sistemas restringidos de transición de estados\cite{sistemasRestringidos}, también denominados planificación STRIPS. Las características de dicho modelo conceptual son las siguientes:
+
+\begin{itemize}
+    \item \textbf{Conjunto de estados finitos}.
+    \item \textbf{Entorno completamente observable}. El planificador tiene en todo momento una descripción completa del entorno.    
+    \item \textbf{Acciones deterministas}, el efecto de cualquier acción es siempre el mismo y se conoce con antelación.
+    \item \textbf{Entorno estático}, el entorno únicamente cambia cuando se realiza una acción.
+    \item \textbf{Objetivos restringidos}, en la búsqueda de los estados objetivos no existen estados que haya que evitar.
+    \item \textbf{Tiempo implícito}, las acciones y los efectos no tienen duración y las transiciones son instantáneas.
+    \item \textbf{Planificación fuera de línea}, el planificador no toma en cuenta ningún tipo de cambio que pueda ocurrir en $\Sigma$ en paralelo a la planificación.
+\end{itemize}
+
+\paragraph{}
+Un problema de planificación clásica puede ser resuelto mediante la transformación de este en otro tipo de problema (como puede ser transformándolo en un problema de tipo SAT\cite{sat}) o buscando una solución en el espacio de estados del problema de planificación, siendo esta última técnica la de más extendido uso. Esta técnica está compuesta de estos tres elementos:
+\begin{itemize}
+    \item \textbf{Grafo de búsqueda}, donde cada nodo representa un estado y cada arista una transición entre estados.
+    \item \textbf{Dirección de la búsqueda}, que puede ser hacia adelante o progresiva (la búsqueda se realiza del estado inicial al estado o estados meta), hacia atrás o regresiva (la búsqueda se realiza desde el estado o estados meta al estado inicial) o bidireccional (la búsqueda se realiza paralelamente desde el estado inicial y desde el estado meta). La mayor parte de la investigación se ha centrado en la búsqueda progresiva, puesto que en la búsqueda regresiva se producen muchos más estados espurios (es decir, estados que no se pueden alcanzar desde el estado inicial) que en la búsqueda progresiva y los resultados empíricos obtenidos con la ejecución de ambos métodos son mejores con la búsqueda progresiva.
+    \item \textbf{El algoritmo de búsqueda}, que define la forma de búsqueda de la solución en el gráfo de búsqueda. Los primeros planificadores utilizaban el algoritmo de búsqueda en profundidad, mientras que algoritmos más actuales han intentado acotar el espacio de búsqueda mediante la introdución de heurísticas que permitiesen discernir qué estados eran más proclives a conducir a los estados meta.
+    
+\end{itemize}
+
+
+        \subsubsection{Planificación heurística}
+
+
+\paragraph{}
+Se entiende planificación heurística como la resolución de problemas de planificación mediante un algoritmo de búsqueda guiado por una función heurística independiente del dominio\cite{DeLaRosa}. La planifión heurística es es el tipo de planificación mayoritariamente usada a la hora de buscar una solución óptima\cite{solOptima}. La diferencia existente entre la búsqueda de una solución óptima y una satisfacible es que mientras que en el segundo caso únicamente se busca una posible solución, en el caso de la optimalidad dicha solución debe ser aquella que se produzca con el menor sumatorio de costes de acción para conectar el estado inicial con uno de los estados meta. Esto implica que para demostrar que la solución encontrada es la solución óptima, es necesario explorar todos los nodos que no se pueda probar que no pertenecen a la solución óptima.
+
+\paragraph{}
+Actualmente, las heurísticas utilizadas para la planificación pueden clasificarse en cinco grupos\cite{gruposHeuristicas}:
+
+\begin{itemize}
+    \item \textbf{Relajación de la eliminación}. Se estima el coste a la meta sin tener en cuenta los efectos de eliminación de variables de las acciones. Algunos ejemplos de estas heurísticas son max heuristic\comment{Buscar cita max heuristic}(que es admisible) y FF\cite{FF}(que no es admisible).
+    \item \textbf{Abstracción}. Se estima el coste a la meta mediante la resolución de una proyección simplificada del espacio de estados. La función de abstración es la que se encarga de determinar qué estados deben de ser agrupados así como de que no se relaje el problema más de lo necesario (ya que convertiría a la heurística en inservible). A diferencia de las heurísticas de relajación de la eliminación, las heurísticas de abstración son siempre admisibles. Algunos ejemplos de este tipo de heurísticas son las abstracciones cartesianas o los patrones estructurales.\comment{Añadir las dos citas}
+    \item \textbf{Caminos críticos}. \comment{TODO}
+    \item \textbf{Puntos de referencia}. son hechos que tienen que ser ciertos en algún punto en todos los planes. El punto de referencia es, por tanto, un conjunto de acciones donde todos los planes contienen al menos una acción de $a$. La mayoría de heurísticas basadas en puntos de referencia son estimaciones basadas en heurísticas de eliminación. No todas sus heurísticas son admisibles. Algunos ejemplos de heurísticas basadas en puntos de referencia que sí son admisibles son heurísticas basadas en puntos de referencia de coste segmentado o heurísticas basadas en puntos de referencia de corte.\comment{add citation}
+    \item \textbf{Flujos de red}. Teniendo en cuenta que el número de veces que un hecho es producido y es consumido debe estar balanceado, es posible realizar un programa lineal para codificar esta información con la que se obtienen los valores de la heurística.\comment{Are they all admissible?} Algunos ejemplos admisibles de esta heurística son la heurística de flujo y la heurística de la ecuación de estado.\comment{Add citations}
+
+\end{itemize}
+
+\paragraph{}
+Estas heurísticas pueden después ser combinadas. A la hora de agregar las heurísticas, hay que tener cuidado de no perder las admisibilidad. El método más simple para realizar esto es quedándose en cada estado únicamente con el valor máximo de las distintas heurísticas.
+
+
+        \subsubsection{Lenguajes de programación para la planificación}
+
+
+\paragraph{}
+Aunque existen más lenguajes de representación para la planificación que los que se van a nombrar, siendo PDDL el lenguaje de más extendido uso así como el lenguaje utilizado para las competiciones de la International Planning Competition (IPC), únicamente se va hablar de sus principales predecesores (STRIPS y ADL) y de PDDL.
+
+
+            \subsubsubsection{STRIPS}
+
+
+\paragraph{}            
+Uno de los primeros lenguajes que se utilizó para la planificación clásica fue \textbf{STRIPS} (Stanford Research Institute Problem Solver)\cite{strips}. Al igual que PDDL (Planning Domain Definition Language), STRIPS utiliza lógica de predicados, también llamada lógica de primer órden. Utilizando este lenguaje, es posible definir el estado inicial, los estados meta y las acciones para poder alcanzar alguno de esos estados. Para ello, se utilizan instancias en forma de tuplas $\langle P, O, I, G \rangle$.
+\begin{itemize}
+    \item $P$: es el conjunto de condiciones.
+    \item $O$: es el conjunto de acciones (también llamadas operadores), cada una de ellas compuestas por una tupla $\langle \alpha, \beta, \gamma, \delta \rangle$:
+    \begin{itemize}
+        \item $\alpha$: condiciones que deben ser verdaderas para la ejecución.
+        \item $\beta$: condiciones que deben ser falsas para la ejecución.
+        \item $\gamma$: condiciones que se hacen verdaderas tras la ejecución.
+        \item $\delta$: condiciones que se hacen falsas tras la ejecución.
+    \end{itemize}
+    \item $I$: es el estado inicial, definido como una serie de condiciones.
+    \item $G$ es el estado meta, definido por la tupla $\langle N, M \rangle$
+    \begin{itemize}
+        \item $N$: representa las condiciones que tienen que ser verdaderas en el estado meta.
+        \item $N$: representa las condiciones que tienen que ser falsas en el estado meta.
+    \end{itemize}
+\end{itemize}
+
+
+            \subsubsubsection{ADL}
+
+
+\paragraph{}
+El lenguaje \textbf{ADL} (Action Description Language)\cite{adl} es posterior a STRIPS, y añadía a este último mucha más versatilidad. Algunas de las principales mejoras que incorpora ADL respecto a STRIPS se citan a continuación:
+\begin{itemize}
+    
+    \item El lenguaje STRIPS únicamente admite la declaración de literales como positivos, mientras que ADL admite la declaración de literales como positivos y como negativos.
+    
+    \item El lenguaje STRIPS opera bajo la asunción del mundo cerrado\cite{cwa}, por lo que todos los literales desconocidos son tomados como falsos. Por contra, ADL opera bajo la asunción del mundo abierto, por lo que el valor de todos los literales desconocidos es tomado como desconocido.
+    
+    \item En STRIPS, los objetivos sólo pueden contener conjunciones. En ADL, los objetivos pueden contener conjunciones y disjunciones.
+    
+    \item En STRIPS, no se permiten definir nuevos tipos de variables, mientras que en ADL sí.
+    
+    \item En ADL se permite la introducción de predicados de igualdad.
+    
+    \item En ADL se permiten efectos condicionales.
+    
+    \item En ADL se permiten literales cuantitativos.
+    
+    \comment{Sacado de Wikipedia, de la página de ADL. Buscar una fuente más fiable para citar estas diferencias, como un libro.}
+    
+\end{itemize}
+
+
+            \subsubsubsection{PDDL}
+
+
+\paragraph{}
+El lenguaje \textbf{PDDL} (Planning Domain Description Language)\cite{pddl} estaba originalmente basado en STRIPS y ADL y surge como intento estandarizarización de los lenguajes de planificación. La versión 1.2 de PDDL es utilizada como lenguaje oficial en la primera IPC (International Planning Competition) y así ha permanecido en siguientes ediciones de esta competición (cambiando únicamente la versión del lenguaje utilizada).
+
+\paragraph{}
+Los problemas en PDDL se dividen en dos partes:
+
+\begin{itemize}
+    \item \textbf{Definición del dominio}: es la descipción tanto del entorno como de las acciones. Las acciones se expresan mediante un nombre que la identifique, una serie de precondiciones e información añadida y suprimida tras la ejecución de la acción.
+    \item \textbf{Definición del problema}: es la definición de un estado inicial y de un estado meta.
+\end{itemize}
+
+\paragraph{}
+Esta separación también se produce en los ficheros que el programador debe introducir como parámetros, lo que facilita la clasificación de problemas (ya que para este fin únicamente se toma en cuenta la definición del dominio).
+
+\paragraph{}
+Por último, es importante destacar que aunque PDDL describe los problemas en lógica de primer órden, no es necesario que los planificadores se ejecuten siguiendo la lógica de primer órden.
+
+
+        \subsubsection{Complejidad computacional de la planificación}
+
+        \subsubsection{Algoritmos utilizados}
+
+            %Fix problem with wrong numbering
+            \setcounter{subsubsubsection}{0}
+            \subsubsubsection{Metric-FF}
+\paragraph{}
+Metric-FF\cite{mff} es un planificador independiente de dominio que permite operar con sentencias de PDDL 2.1 y con sentencias numéricas con dígitos. Este planificador es una extensión del planificador FF para incluir construcciones numéricas\cite{ff1} que resuelvan tareas lineales (es decir, que el valor de las variables numéricas pueda ser modificado mediante los operadores de suma y resta, excluyendo otras operaciones como la multiplicación o la división). Está implementado en C, ambos desarrollados por Joerg Hoffmann bajo la licencia de GNU General Public License. Metric-FF fue uno de los planificadores presentados en la tercera edición de la IPC obteniendo el mejor desempeño de todos los planificadores en el track numérico\cite{mffIPC3}. Existen a su vez otras versiones de FF, como pueden ser Conformant-FF, Contingent-FF\cite{conformant} o FF-X.
+
+\paragraph{}
+Para poder buscar una solución, el planificador necesita un árbol de estados, un valor heurístico para cada estado del árbol de estados y un algoritmo de búsqueda que permita buscar soluciones en dicho árbol. Este árbol se configura mediante una relajación de las condiciones del problema inicial y un intento de buscar una solución al problema relajado, por ejemplo mediante la conservación de los estados eliminados por las acciones. Lo que diferencia a esta extensión llamada \textbf{Metric-FF} del planificador \textit{FF} original es que también utiliza también técnicas de relajación de las cláusulas para los dominios numéricos con dígitos. Estas técnicas incluyen en los dominios numéricos la relajación de decrementos de las variables numéricas, puesto que en estos dominios estas variables cuando aparecen en la parte de los efectos de los operadores, suelen aparecen en calidad de variación de sus valores (incrementos o decrementos de los mismos) en lugar de por eliminación de las variables en sí. Sin embargo, para que esta relajación del problema sea válida se debe comprobar antes que siempre es preferible tener valores elevados (a estos problemas se les llama \textit{monotónicos}) para poder alcanzar la solución, ya que de no ser así se podría incluso perder la solución al intentar relajar el problema.
+
+
+
+\paragraph{}
+El proceso de búsqueda de la solución tanto del problema relajado como del problema original se realiza utilizando el algoritmo de búsqueda de colina forzada o \textit{enforced Hill Climbing}. Este algoritmo es una variación del algoritmo de búsqueda de colina o \textit{Hill Climbing}. Antes de explicar la particularidad del algoritmo utilizado en \textbf{Metric-FF} respecto al algoritmo de \textit{Hill climbing}, se va a explicar cómo funciona este último.
+
+\paragraph{}
+El algoritmo de \textit{Hill climbing} es un algoritmo de búsqueda local iterativo que expande los estados iniciales hasta encontrar un estado que sea la solución. Cuando se ha encontrado dicha solución, se intenta mejorar la misma cambiando de manera incremental uno de los elementos de la solución, que en este caso sería el cambio de uno de los operadores utilizados o de la entrada de alguno de los elementos de dichos operadores. De esta manera se intenta encontrar nuevas soluciones que puedan ser de mayor calidad (en el caso de que por ejemplo los operadores tengan una métrica, que reduzca el coste para alcanzar dicha solución desde el estado inicial).
+
+\paragraph{}
+La diferencia entre este algoritmo y \textit{enforced Hill Climbing} reside en que mientras que en \textit{Hill Climbing} la mejora iterativa se hace mediante la selección de uno de los mejores sucesores del estado actual, en \textit{enforced Hill Climbing} se utiliza una búsqueda en anchura o \textit{breadth first seach} para encontrar el sucesor que sea el mejor con total certeza (puesto que se han comparado todos los estados sucesores). El problema que tienen ambos algoritmos es que al ser una búsqueda local, este algoritmo falla en caso de que los valores heurísticos de los sucesores no sean consecutivos sino que se topen con máximos locales, lo que haga que todo sucesor tenga peor valor heurístico aun así de que por dicha ruta se llegase a obtener la solución con el máximo valor heurístico absoluto.
+
+
+\paragraph{}
+Respecto a las fecha primera versión del planificador del que deriva, FF, fue publicada en 2001 y la versión de Metric-FF utilizada en este trabajo es la versión 2.1 (la última versión publicada a fecha 04/2017).
+            \subsubsubsection{Fast Downward}
+\paragraph{}
+Fast Downward\cite{fastDownward} es un planificador que puede solucionar problemas expresados en PDD2.2. Al igual que ocurre con FF, Fast Downward es un planificador progresivo. La heurística utiliza descomposiciones jerárquicas de las tareas o \textit{heurística de gráfico casual}. Entre sus logros, se encuentra el ser el planificador ganador del track clásico de la cuarta edición de la IPC.
+
+\paragraph{}
+Respecto a la versión utilizada, se ha utilizado la versión presentada en la IPC de 2011.
+
+            \subsubsubsection{LPG}
+\paragraph{}
+El planificador Local Search Planner (LPG)\cite{lpg} es, al igual que los planificadores anteriores, un planificador independiente de dominio y su primera versión salió a la luz en el año 2003. Este planificador utiliza varias heurísticas basadas en una función de evaluación parametizada donde los parámetros son evaluados dinámicamente. Es un planificador incremental que produce planes basados en varios criterios de calidad. El núcleo de este planificador está basado en búsquedas estocásticas locales y en una representación basada en grafos llamada Grafos Temporales de Acción (TA-graphs).
+
+\paragraph{}
+Para realizar la búsqueda local, LPG utiliza el algoritmo Walkplan con el fin de encontrar el grafo de solución. Para ello, primeramente habrá que generar un grafo de acciones (A-graph) inicial, siendo un grafo de acción un subgrafo de un grafo de planificación conteniendo los nodos de acciones iniciales y los nodos de acciones finales (que son el último paso antes de alcanzar la solución) y tal que si un nodo de acción del grafo de planificación está en este grafo de acción entonces también los nodos de hechos del grafo de planificación correspondientes a las precondiciones y los efectos positivos de estas acciones deben estar en este nuevo grafo de acciones.
+
+\paragraph{}
+Este A-graph inicial podrá ser generado de diversas maneras, como puede ser generando un grafo vacío o inicializado aleatoriamente (este segundo caso explica por qué este planificador es estocástico). Una vez se ha generado este grafo inicial, se pueden añadir o quitar nodos de acción hasta llegar a encontrar una solución.
+
+\paragraph{}
+La versión utilizada en las pruebas es la versión de 2004, LPG-td, ya que esta versión introduce la mejora respecto a la versión 1.2 de poder resolver problemas numéricos.
+
+\subsection{Modificadores automáticos de dominios y problemas}
+
+\paragraph{}
+En esta sección se van a explicar en qué consisten algunos de los modificadores automáticos de dominios independientes de dominio. La mayor parte de estos modificadores utilizan exclusivamente una única estrategia genérica para modificar ese dominio sin alternarla con otras posibilidades. Las estrategias más frecuentes suelen ser: la representación de los dominios y problemas en formato numérico con dígitos o con palabras o el aglutinamiento de varios operadores en macrooperadores.
+
+\subsubsection{Generadores de macrooperadores}
+
+\paragraph{}
+Los macrooperadores son la unión de varios operadores en un solo operador que tienen por objetivo servir como atajo a la resolución de problemas al poder realizar las acciones equivalentes de varios operadores con un solo operador. Estos macrooperadores pueden ser perjudiciales para la resolución de problemas de planificación ya que tienden a incrementar el factor de ramificación durante la búsqueda de la solución, ya que por lo general los macrooperadores suelen incrementar el tamaño de la interfaz de los operadores, lo que a su vez incrementa la memoria consumida por el planificador. Por ello la utilización de los macrooperadores no siempre siempre los tiempos de búsqueda de la solución por parte del planificador ni la calidad de la misma (entendida como el número de pasos para llegar a la solución o el valor de la métrica que haya que reducir o ampliar según sea definido en el problema). Deberán ser los propios algoritmos generadores de estos macrooperadores quienes deban tener en cuenta estos contrapuntos y, en caso de que el generador esté bien programado, no genere macrooperadores en aquellos problemas en los que los inconvenientes no compensen la mejora que aportan dichos cambios y por tanto devuelvan los dominios como se encontraban originalmente.
+
+\paragraph{}
+Respecto a la longitud de estos macrooperadores, trabajos recientes han demostrado que es mejor generar pocos macrooperadores y con un tamaño de interfaz pequeño que generar muchos macrooperadores y con un tamaño de interfaz grande. Puesto que las diferentes versiones del dominio utilizado para las pruebas empíricas que aparecen en la sección [TODO: add section #] incluyen varias versiones con macrooperadores de los dos tipos, esta afirmación se pondrá a prueba con los resultados obtenidos para este caso concreto (aun sabiendo que de un caso tan centralizado no es posible sacar conclusiones más que el servir como un apoyo más de dicha afirmación y no una generalización).
+
+\paragraph{}
+A continuación se incluye la descripción de algunos ejemplos de generadores automáticos de macrooperadores, siendo todos ellos independientes de dominio.
+
+\comment{Incluir definición de generadores de macros online y offline}
+
+\subsubsubsection{Planning Task Transformer}
+\paragraph{}
+El generador de macrooperadores Planning Task Transformer (PTT) es un generado \textit{offline} se basa en la búsqueda de \textit{enredos}\comment{entanglements} -es decir, la relación entre sí de los operadores y de los predicados- que pueden luego llegar a convertirse en macrooperadores, que a su vez son aprendidos a partir de los planes, pues es en estos planes donde se puede observar por ejemplo si dos acciones que actualmente no son adyacentes pueden llegar a serlo mediante permutaciones del órden de ejecución de los operadores. Los macrooperadores se generan según varios criterios, como puede ser el tamaño de la interfaz de éste, el número de veces que se sucede la secuencia de operadores encapsulados o el número de macrooperadores totales generados, aunque PTT no tiene un límite fijo de macrooperadores que pueden llegar a generarse. Si se eliminasen los operadores encapsulados implica generalmente la pérdida de la completitud. Sin embargo, las pruebas realizadas por los desarrolladores de este generador demuestran que por lo menos en los dominios presentados a las competiciones de la IPC, esta eliminación haría perder la solvabilidad muy raramente.
+
+\paragraph{}
+Respecto a los enredos en los que se basan estos macroopedores, en PTT se distinguen los enredos externos y los enredos internos.
+
+\paragraph{}
+Los enredos externos capturan relaciones causales entre los predicados iniciales o los predicados meta y son usados para podar instancias poco prometedoras de los operadores. Estos enredos son deducidos a partir de los planes de los problemas y uno de los parámetros que se introduce como entrada para determinar cuál de los enredos puede pasar a convertirse en un macrooperador es el porcentaje de veces que dicho enredo no es respetado en alguno de los planes, que es indicado mediante el \textit{flaw ration}. Encontrar estos enredos tiene una complejidad de PSPACE-completo, por ello estos enredos son deducidos mediante algoritmos de aproximación que tienen menor complejidad, teniendo como contrapunto que la transformación de estos enredos en macrooperadores que sustituyan a los operadores iniciales generalmente no conserva la completitud. Sin embargo, estos enredos no siempre se traducen en la generación de macrooperadores. El resultado final que se obtiene es que PTT conserva la completitud debido a que sólo se añaden un subconjunto de los macrooperadores derivados de los enredos externos que permiten que esta se mantenga.
+
+\paragraph{}
+Los enredos internos se producen entre dos operadores en el que uno de ellos produce un predicado que es requerido (o consumido) por un segundo operador. Este tipo de enredos también se denominan enredos por sucesión o por predecesión (en función de si se está refiriendo al sucesor del productor o al predecesor del consumidor).
+
+
+\subsubsubsection{Marvin}
+\paragraph{}
+Marvin es un planificador automático desarrollado a partir de las ideas desarrolladas en FF, lo que queda patente en cosas como que comparten entre sí el uso de EHC como algoritmo de búsqueda o que ambos realicen el proceso de búsqueda hacia adelante. La diferencia más importante es que Marvin incluye una generación de macrooperadores que son después utilizados para la búsqueda de la solución. En las siguientes líneas se va a intentar explicar cómo funciona dicho módulo del planificador.
+
+\paragraph{}
+Este planificador utiliza los macrooperadores como medio para intentar escapar de los \textit{plateaus}, ya que estos son los responsables de que los algoritmos de búsqueda local se queden estancados y pierdan la mayor parte del tiempo de búsqueda del algoritmo. Como Marvin utiliza el algoritmo de búsqueda local EHC, evitar caer en estos \textit{plateaus} es una tarea fundamental para reducir los tiempos de búsqueda.
+
+\paragraph{}
+Los macrooperadores son seleccionados en función de las veces que se repita el mismo \textit{plateau} con diferentes problemas. También influye en el proceso de selección de macrooperadores el tamaño de dicho \textit{plateau}, habiendo una correspondencia directa entre la probabilidad de que un macrooperador sea seleccionado y el tamao del \textit{plateau} en cuestión. Esto quiere decir que al contrario que en el caso de PTT, con Marvin se potencian los macrooperadores de mayor tamaño de interfaz.
+
+\paragraph{}
+Por último, es importante comprobar que los macrooperadores utilizados tienen el mínimo impacto en la longitud del plan: no debe existir una secuencia de operadores iniciales que conlleve al resultado en menos pasos que la aplicación de dicho macrooperador.
+
+\comment{\subsubsubsection{MacroFF}}
+
+\subsubsection{Partición de operadores}
+\paragraph{}
+Como se ha comentado el la sección anterior, el beneficio de la inclusión de macrooperadores en la planificación automática está en disputa con otras pérdidas que influyen en la calidad y en el tiempo de búsqueda. A esta disputa entre pérdidas y ganancias se le denomina \textit{el problema de la utilidad}.
+
+\paragraph{}
+La partición de operadores parte de esta misma base y tiene el enfoque complementario: algunos operadores al ser fragmentados permitirán obtener beneficios en cuanto a la calidad y al tiempo de búsqueda del planificador debidos a la disminución del tamaño de la interfaz de los operadores. En contraste con las técnica de generación de macrooperadores, la segmentación de operadores ha sido mucho menos estudiada entre la comunidad científica.
+
+\subsubsubsection{Automatic Action Schema Splitting}
+\paragraph{}
+La modificación de segmentar las acciones en otras más pequeñas es un tipo de modificación del dominio que es muy frecuente en modificaciones realizadas a manos sobre dominios. La principal ventaja de esta técnica es la redución de los operadores básicos\comment{ground operators}. Por ejemplo, dada una acción $a[X]$ con un tamaño de interfaz $|X|$, su segmentación creará los operadores $a_1[X_1],...,a_k[X_k]$. Si por ejemplo cada $x \in X$ puede ser instanciada con 100 objetos, $|X|=3$ y $|X_i|=1$ (el tamaño de la interfaz para cada operador tras la segmentación), en el primer caso el número de posibles instancias es $100^3=1.000.000$ mientras que en el caso segmentado sería de $100*3=300$.
+
+\paragraph{}
+Para que una separación de operadores sea válida, se deben cumplir las siguientes condiciones:
+\begin{itemize}
+    \item Los operadres $a_i[X],...,a_k[X]$ deben de ejecutarse en bloque (sin que se ejecuten otras acciones de por medio) y respetando el órden en que lo hacían los operadores iniciales.
+    \item Los operadores $a_i[X],...,a_k[X]$ deben estar configurados de tal manera que al ser ejecutados se asegure que el o los predicados utilizados por estas acciones se mantenga a lo largo de la ejecución. Esto quiere decir que por ejemplo no sea posible que cambie uno de los predicados y por tanto las acciones segmentadas den un resultado distinto de la ejecución de la acción original.
+\end{itemize}
+
+\subsubsection{Reprentación numérica con dígitos}
+\paragraph{}
+
+
+\subsubsection{Reprentación numérica con palabras}
+\subsubsubsection{Baggy}
+\paragraph{}
+
+
+        \subsubsection{Dominios utilizados}
+
+\paragraph{}
+Todos los dominios y problemas utilizados están escritos en PDDL y consisten principalmente en modificaciones del dominio original de \href{https://helios.hud.ac.uk/scommv/IPC-14/repository/benchmarksV1.1.zip}{Child-Snack} utilizado en la IPC de 2014\cite{ipc2014} junto con algunas modificaciones adicionales de otros dominios de la IPC de este mismo año. Los dominios utilizados para las pruebas de la inmensa mayoría de los trabajos de planificación automática citados en este documento provienen también de esta competición, en la cual hay varios dominios que se repiten o se actualizan entre las distintas ediciones, por lo cual se cree que la utilización exclusiva de dominios pertenecientes a la IPC puede permitir que otros investigadores puedan problematizar y comparar los resultados obtenidos en este trabajo con otras investigaciones con mayor facilidad, ya que por lo que se ha dicho se comparte el marco de problemas utilizado con muchas de las investigaciones recientes en este área.
+
+
+
+\medskip
+
+%\bibliographystyle{unsrt}
+%\bibliography{sample}
+
+\end{document}

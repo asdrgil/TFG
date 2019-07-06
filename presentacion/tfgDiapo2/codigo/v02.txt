@@ -1,0 +1,18 @@
+(:action make_sandwich
+
+    :parameters (?s - sandwich ?b - bread-portion
+     ?c - content-portion)
+
+    :precondition (and
+        (at_kitchen_bread ?b)
+        (at_kitchen_content ?c)
+        (notexist ?s)
+        (not (and (no_gluten_bread ?b)
+        (no_gluten_content ?c))))
+
+    :effect (and
+        (not (at_kitchen_bread ?b))
+        (not (at_kitchen_content ?c))
+        (at_kitchen_sandwich ?s)
+        (not (notexist ?s)))
+)
